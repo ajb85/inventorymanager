@@ -1,0 +1,36 @@
+@media print {
+  #content,
+  #page {
+    width: 100%;
+    margin: 0;
+    float: none;
+  }
+  @page {
+    margin: 2cm;
+  }
+  body {
+    -webkit-print-color-adjust: exact !important;
+    font: 13pt Georgia, "Times New Roman", Times, serif;
+    line-height: 1.3;
+    color: #000;
+  }
+  .header,
+  .printButton,
+  .currentDate,
+  .submitNewInv {
+    display: none;
+  }
+  .newInvTable,
+  .borderRight {
+    border: 1px solid black;
+  }
+  .alternateHighlight:nth-child(2n) {
+    background-color: #ccc;
+  }
+  .inputListSm {
+    width: 150px;
+    height: 20px;
+    background: transparent;
+    border: transparent;
+  }
+}

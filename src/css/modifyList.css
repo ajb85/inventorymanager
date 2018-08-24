@@ -1,0 +1,48 @@
+.inputList {
+  width: 100px;
+}
+.inputListSm {
+  width: 50px;
+}
+.casePrice {
+  border: transparent;
+  background: transparent;
+}
+.casePrice:focus {
+  border: 1px solid black;
+  background: white;
+}
+.inputTable {
+  text-align: center;
+}
+.addRow {
+  width: 30px;
+  margin-left: 490px;
+}
+th {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+td {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+.alternateHighlight:nth-child(even) {
+  background-color: #ccc;
+}
+.borderRight {
+  border-collapse: collapse;
+  border-right: 1px solid black;
+}
+.borderLeft {
+  border-collapse: collapse;
+  border-left: 1px solid black;
+}
+.underline {
+  border-bottom: 1px solid;
+}
+.deleteRow {
+  width: 30px;
+  float: right;
+  margin-right: -40px;
+}

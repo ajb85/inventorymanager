@@ -1,0 +1,47 @@
+body {
+  background-color: #64706c;
+}
+.header {
+  background-color: #32324c;
+  height: 75px;
+}
+
+.headerLinks {
+  float: right;
+  padding-top: 20px;
+  color: white;
+  font-size: 30px;
+  font-family: Georgia, serif;
+}
+.title {
+  float: right;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  margin-left: 10px;
+  margin-right: 10px;
+  position: relative;
+  display: inline-block;
+}
+.title:hover {
+  text-decoration: underline;
+}
+.title .dropdown {
+  position: absolute;
+  font-size: 20px;
+  background: #32324c;
+  text-align: center;
+  visibility: hidden;
+  margin: 0;
+  list-style: none;
+  padding: 0;
+  z-index: 1;
+  width: 100%;
+  text-decoration: none;
+}
+.title:hover .dropdown {
+  visibility: visible;
+}
+
+.navList:hover {
+  text-decoration: underline;
+}
