@@ -41,6 +41,19 @@ class InputInvoice extends Component {
   }
   handleSubmit(event) {
     event.preventDefault();
+    let dataToSave = {};
+    const time = new Date().getTime();
+    dataToSave[time] = this.state;
+    //POST fetch to update server file under username with name+link
+    const saveFileURL = "./saveInvData.php";
+    var fetchData = {
+      method: "POST",
+      body: JSON.stringify([dataToSave, "inventories"]),
+      cache: "no-cache"
+    };
+    fetch(saveFileURL, fetchData)
+      .then(res => res.text())
+      .then(data => console.log("data: ", data));
     return false;
   }
   render() {

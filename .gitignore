@@ -2,7 +2,7 @@
 
 # dependencies
 /node_modules
-/src/data
+/src/data/defaultUser
 # testing
 /coverage
 
