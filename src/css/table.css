@@ -1,0 +1,91 @@
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+th {
+  border: 1px solid black;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+td {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+.inputList {
+  width: 150px;
+}
+.inputListSm {
+  width: 50px;
+  text-align: center;
+}
+.casePrice {
+  border: transparent;
+  background: transparent;
+}
+.casePrice:focus {
+  border: 1px solid black;
+  background: white;
+}
+.inputTable {
+  border: 1px solid black;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+  text-align: center;
+}
+.addRow {
+  width: 30px;
+  margin-left: 490px;
+}
+.alternateHighlight:nth-child(even) {
+  background-color: #dae6ad;
+}
+
+.borderRight {
+  border-collapse: collapse;
+  border-right: 1px solid black;
+}
+.deleteRow {
+  padding-top: -4px;
+  color: #cc0000;
+  cursor: pointer;
+  float: right;
+  margin-right: -30px;
+  background: transparent;
+  border: transparent;
+}
+.ghostRow {
+  background-color: #f0f7d4;
+  opacity: 0.7;
+  border: 2px;
+  border-style: outset;
+}
+.ghostRow:hover {
+  border-style: inset;
+  cursor: pointer;
+}
+.tableHeader {
+  background-color: #526f7a;
+  color: white;
+}
+
+.saveButton {
+  position: fixed;
+  top: 85;
+  right: 0;
+  margin-right: 2px;
+  font-family: arial;
+  font-size: 15pt;
+  color: #ffffff;
+  cursor: pointer;
+  background-color: darkred;
+  border: 1px solid black;
+}
+.submitForm {
+  text-align: center;
+}
+.submitButton {
+  margin-top: 10px;
+}

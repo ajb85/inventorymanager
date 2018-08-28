@@ -1,8 +1,10 @@
 body {
-  background-color: #64706c;
+  background: linear-gradient(to bottom, #eaedde 0%, #ffffff 60%);
+  background-color: #ffffff;
+  background-repeat: no-repeat;
 }
 .header {
-  background-color: #32324c;
+  background-color: #091d34;
   height: 75px;
 }
 
@@ -28,7 +30,7 @@ body {
 .title .dropdown {
   position: absolute;
   font-size: 20px;
-  background: #32324c;
+  background: #091d34;
   text-align: center;
   visibility: hidden;
   margin: 0;

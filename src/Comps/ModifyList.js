@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "../css/modifyList.css";
 import TableRow from "./TableRow";
 
 class ModifyList extends Component {
@@ -13,6 +12,22 @@ class ModifyList extends Component {
     this.state = {
       rows: this.props.currentList
     };
+  }
+  componentDidUpdate(prevProps, prevState) {
+    console.log(this.state.rows);
+    const stateDidChange = this.arrayOfObjectsDidChange(
+      this.state.rows,
+      prevState.rows
+    );
+    const dataWasChanged = this.arrayOfObjectsDidChange(
+      this.state.rows,
+      this.props.currentList
+    );
+    if (dataWasChanged && stateDidChange) {
+      this.setState({ changed: true });
+    } else if (stateDidChange && !dataWasChanged) {
+      this.setState({ changed: false });
+    }
   }
   componentDidMount() {
     if (!this.state.rows.length) {
@@ -45,7 +60,16 @@ class ModifyList extends Component {
       ]
     });
   }
-
+  addGhostRow() {
+    let style = { fontStyle: "italic" };
+    return (
+      <tr onClick={this.addRow}>
+        <td colspan="5" className="ghostRow">
+          ↓ <span style={style}>Add Row</span> ↓
+        </td>
+      </tr>
+    );
+  }
   consoleLog() {
     console.log(this.state.rows);
   }
@@ -68,8 +92,38 @@ class ModifyList extends Component {
       });
     return false;
   }
+  //Returns "true" if the two arrays are different
+  //"false" if the content and order are the same
+  arrayOfObjectsDidChange(newArr, oldArr) {
+    let changed = false;
+    newArr.forEach(function(obj, i) {
+      //If oldArr doesn't exist, then there's a new row
+      //in newArr, therefore there's been a change,
+      // return true;
+      if (oldArr[i]) {
+        //Check both objects to see if their key:value
+        //pairs are the same.
+        for (var key in obj) {
+          if (obj[key] !== oldArr[i][key]) {
+            changed = true;
+          }
+        }
+      } else {
+        changed = true;
+      }
+    });
+    //If the order and all the values of the objects
+    //are the same, changed = false
+    return changed;
+  }
 
   render() {
+    let saveButton;
+    if (this.state && this.state.changed) {
+      saveButton = (
+        <input className="saveButton" value="Save Changes" type="submit" />
+      );
+    }
     const table = this.state.rows.map((row, i) => (
       <TableRow
         key={i}
@@ -80,45 +134,24 @@ class ModifyList extends Component {
         rowData={row}
       />
     ));
+    table.push(this.addGhostRow());
 
     return (
       <div>
         <form onSubmit={this.onSubmit}>
+          <div className="saveButtonDiv">{saveButton}</div>
           <table className="inputTable">
-            <thead>
+            <thead className="tableHeader">
               <tr>
-                <th
-                  className={["borderRight", "underline", "borderLeft"].join(
-                    " "
-                  )}
-                >
-                  Unit
-                </th>
-                <th className={["borderRight", "underline"].join(" ")}>
-                  Measurement
-                </th>
-                <th className={["borderRight", "underline"].join(" ")}>
-                  Units / Case
-                </th>
-                <th className={["borderRight", "underline"].join(" ")}>
-                  Case Cost
-                </th>
-                <th className={["borderRight", "underline"].join(" ")}>
-                  Unit Sell Price
-                </th>
+                <th>Unit</th>
+                <th>Measurement</th>
+                <th>Units / Case</th>
+                <th>Case Cost</th>
+                <th>Unit Sell Price</th>
               </tr>
             </thead>
             <tbody>{table}</tbody>
           </table>
-          <input
-            type="button"
-            className="addRow"
-            value="+"
-            onClick={this.addRow}
-          />
-          <br />
-          <input type="button" value="Console Log" onClick={this.consoleLog} />
-          <input type="submit" value="Submit" />
         </form>
       </div>
     );

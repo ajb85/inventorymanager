@@ -17,8 +17,14 @@
   .header,
   .printButton,
   .currentDate,
-  .submitNewInv {
+  .submitNewInv,
+  .saveButton,
+  .submitButton {
     display: none;
+  }
+  .tableHeader {
+    background-color: white;
+    color: black;
   }
   .newInvTable,
   .borderRight {

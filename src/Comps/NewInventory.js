@@ -7,7 +7,8 @@ const today = getTodaysDate();
 let savedData;
 
 //Local fetch Code
-/*const url = "inventories.json";
+/*
+const url = "inventories.json";
 const fetchData = {
   headers: {
     Accept: "application/json",
@@ -23,7 +24,8 @@ fetch(url, fetchData)
       savedData = data;
     }
   });
-}*/
+}
+*/
 
 class NewInventory extends Component {
   constructor(props) {
@@ -35,11 +37,16 @@ class NewInventory extends Component {
   componentDidMount() {
     this.props.currentList.forEach(row => this.setState({ [row.item]: {} }));
   }
-
+  onDateChange(event) {
+    this.setState({ date: event.target.value });
+  }
   onInputChange(item, index, event) {
     const updatedField = this.state[item];
     updatedField[index] = event.target.value;
     this.setState({ [item]: updatedField });
+  }
+  consoleLog() {
+    console.log(getTodaysDate());
   }
   handleSubmit(event) {
     event.preventDefault();
@@ -69,16 +76,21 @@ class NewInventory extends Component {
       />
     ));
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input type="date" defaultValue={today} className="currentDate" />
+      <form onSubmit={this.handleSubmit} className="submitForm">
+        <input
+          type="date"
+          defaultValue={getTodaysDate()}
+          className="currentDate"
+          onChange={this.onDateChange.bind(this)}
+        />
         <input
           className="printButton"
           type="button"
           value="Print Count Sheet"
           onClick={window.print}
         />
-        <table className="newInvTable">
-          <thead>
+        <table className="inputTable">
+          <thead className="tableHeader">
             <tr>
               <th>Item</th>
               <th>Count</th>
@@ -90,8 +102,8 @@ class NewInventory extends Component {
         </table>
         <input
           type="submit"
-          className="submitNewInv"
-          value="Submit New Inventory"
+          className="submitButton"
+          value="Submit Inventory"
         />
       </form>
     );
@@ -115,6 +127,6 @@ function getTodaysDate() {
     mm = "0" + mm;
   }
 
-  today = mm + "/" + dd + "/" + yyyy;
+  today = yyyy + "-" + mm + "-" + dd;
   return today;
 }

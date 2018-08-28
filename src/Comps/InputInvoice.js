@@ -67,10 +67,14 @@ class InputInvoice extends Component {
       />
     ));
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input type="date" className="currentDate" />
-        <table className="newInvTable">
-          <thead>
+      <form onSubmit={this.handleSubmit} className="submitForm">
+        <input
+          type="date"
+          className="currentDate"
+          defaultValue={getTodaysDate()}
+        />
+        <table className="inputTable">
+          <thead className="tableHeader">
             <tr>
               <th>Item</th>
               <th>Count</th>
@@ -80,10 +84,29 @@ class InputInvoice extends Component {
           </thead>
           <tbody>{table}</tbody>
         </table>
-        <input type="submit" className="submitInvoice" value="Submit Invoice" />
+        <input type="submit" className="submitButton" value="Submit Invoice" />
       </form>
     );
   }
 }
 
 export default InputInvoice;
+
+function getTodaysDate() {
+  var today = new Date();
+  var dd = today.getDate();
+  //January is 0
+  var mm = today.getMonth() + 1;
+  var yyyy = today.getFullYear();
+
+  if (dd < 10) {
+    dd = "0" + dd;
+  }
+
+  if (mm < 10) {
+    mm = "0" + mm;
+  }
+
+  today = yyyy + "-" + mm + "-" + dd;
+  return today;
+}

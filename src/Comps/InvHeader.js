@@ -3,12 +3,11 @@ import logo from "../imgs/logo.png";
 import ModifyList from "./ModifyList.js";
 import NewInventory from "./NewInventory.js";
 import InputInvoice from "./InputInvoice.js";
-
+//<img src={logo} className="logo" alt="logo" />
 class InvHeader extends Component {
   render() {
     return (
       <header className="header">
-        <img src={logo} className="logo" alt="logo" />
         <span className="headerLinks">
           <nav className="title">
             Reports
