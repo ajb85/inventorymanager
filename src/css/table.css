@@ -15,6 +15,10 @@ td {
 .inputList {
   width: 150px;
 }
+.inputListMed {
+  width: 70px;
+  text-align: center;
+}
 .inputListSm {
   width: 50px;
   text-align: center;
@@ -88,4 +92,16 @@ td {
 }
 .submitButton {
   margin-top: 10px;
+}
+.calendar {
+  border: 1px solid black;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+  text-align: center;
+}
+.center {
+  text-align: center;
+  margin: 0;
 }

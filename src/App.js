@@ -15,7 +15,7 @@ class App extends Component {
     this.fetchListData = this.fetchListData.bind(this);
     this.changePage = this.changePage.bind(this);
     this.state = {
-      page: <Volume />
+      page: <Volume startDate={new Date(2018, 11, 27)} days={21} />
     };
   }
   componentDidMount() {

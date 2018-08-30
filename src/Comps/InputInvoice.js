@@ -48,7 +48,7 @@ class InputInvoice extends Component {
     const saveFileURL = "./saveInvData.php";
     var fetchData = {
       method: "POST",
-      body: JSON.stringify([dataToSave, "inventories"]),
+      body: JSON.stringify([dataToSave, "invoices"]),
       cache: "no-cache"
     };
     fetch(saveFileURL, fetchData)
