@@ -31,7 +31,7 @@ class NewInventory extends Component {
   constructor(props) {
     super(props);
     this.onInputChange = this.onInputChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
     //this.state: {item: {0: "123", 1: "41"}, item2: {}}
   }
   componentDidMount() {
@@ -48,7 +48,7 @@ class NewInventory extends Component {
   consoleLog() {
     console.log(getTodaysDate());
   }
-  handleSubmit(event) {
+  onSubmit(event) {
     event.preventDefault();
     let dataToSave = {};
     const time = new Date().getTime();
@@ -76,7 +76,7 @@ class NewInventory extends Component {
       />
     ));
     return (
-      <form onSubmit={this.handleSubmit} className="submitForm">
+      <form onSubmit={this.onSubmit} className="submitForm">
         <input
           type="date"
           defaultValue={getTodaysDate()}
