@@ -5,8 +5,35 @@ class Volume extends Component {
     super(props);
     this.tabularRow = this.tabularRow.bind(this);
     this.tabularData = this.tabularData.bind(this);
+    this.createDatesObject = this.createDatesObject.bind(this);
+    this.singleDateObject = this.singleDateObject.bind(this);
+    this.state = {
+      "1545886800000": 85,
+      "1545973200000": 8,
+      "1546059600000": 74,
+      "1546232400000": 53,
+      "1546318800000": 36,
+      "1546405200000": 53,
+      "1546491600000": 85,
+      "1546578000000": 11,
+      "1546664400000": 42,
+      "1546750800000": 4,
+      "1546837200000": 28,
+      "1546923600000": 23,
+      "1547010000000": 38,
+      "1547096400000": 4,
+      "1547182800000": 88,
+      "1547269200000": 33,
+      "1547355600000": 43,
+      "1547442000000": 69,
+      "1547528400000": 92,
+      "1547614800000": 76
+    };
   }
-  handleChange() {}
+
+  onInputChange(time, event) {
+    this.setState({ [time]: event.target.value });
+  }
   tabularRow(dates) {
     let table = [];
     //"i" runs through "dates" variable to place on the calendar.
@@ -37,6 +64,22 @@ class Volume extends Component {
     }
     return table;
   }
+  createDatesObject(startDate, days) {
+    let dates = [];
+    for (let i = 0; i < days; i++) {
+      dates.push(this.singleDateObject(startDate, i));
+    }
+    return dates;
+  }
+  singleDateObject(date, days) {
+    var result = new Date(date);
+    result.setDate(result.getDate() + days);
+    let month = result.getMonth();
+    let year = result.getFullYear();
+    let day = result.getDate();
+    let time = result.getTime();
+    return { year: year, month: month, day: day, time: time };
+  }
   tabularData(date) {
     const dateFormatted = dateFormat(date.year, date.month + 1, date.day, 1);
     return (
@@ -45,14 +88,15 @@ class Volume extends Component {
         <input
           className="inputListMed"
           type="number"
+          value={this.state[date.time]}
           placeholder="Occupancy"
-          onChange={this.handleChange}
+          onChange={this.onInputChange.bind(this, date.time)}
         />
       </td>
     );
   }
   render() {
-    let dates = createDatesObject(this.props.startDate, this.props.days);
+    let dates = this.createDatesObject(this.props.startDate, this.props.days);
 
     let table = this.tabularRow(dates);
     return (
@@ -78,23 +122,6 @@ class Volume extends Component {
 
 export default Volume;
 
-function createDatesObject(startDate, days) {
-  let dates = [];
-  for (let i = 0; i < days; i++) {
-    dates.push(singleDateObject(startDate, i));
-  }
-  return dates;
-}
-
-function singleDateObject(date, days) {
-  var result = new Date(date);
-  result.setDate(result.getDate() + days);
-  let month = result.getMonth();
-  let year = result.getFullYear();
-  let day = result.getDate();
-  return { year: year, month: month, day: day };
-}
-
 function dateFormat(yyyy, mm, dd, short) {
   if (dd < 10) {
     dd = "0" + dd;
@@ -107,34 +134,3 @@ function dateFormat(yyyy, mm, dd, short) {
   }
   return mm + "/" + dd + "/" + yyyy;
 }
-
-/*
-let month = startDate.getMonth();
-let year = startDate.getFullYear();
-let day = startDate.getDate();
-let lastDayOfMonth = daysInMonth(year, month);
-let dates=[];
-
-for(var i=0; i<days; i++){
-  day += 1;
-  if(day > lastDayOfMonth){
-    day = 1;
-    month += 1
-    if(month > 12){
-      month = 1;
-      year += 1;
-    }
-    lastDayOfMonth = daysInMonth(year, month);
-  }
-  const date = dateFormat(year, month, day);
-  dates.push(date);
-}
-
-
-console.log(dates);
-
-function daysInMonth(year, month) {
-  return ((new Date(year, month, 0)).getDate());
-}
-
-*/
