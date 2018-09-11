@@ -6,8 +6,7 @@
 import React, { Component } from "react";
 import TableRowInvoices from "./TableRowInvoices.js";
 
-let savedData;
-const url = "invoices.json";
+/*const url = "invoices.json";
 const fetchData = {
   headers: {
     Accept: "application/json",
@@ -15,7 +14,7 @@ const fetchData = {
   },
   method: "GET",
   cache: "no-cache"
-};
+};*/
 
 class InputInvoice extends Component {
   constructor(props) {
@@ -25,7 +24,7 @@ class InputInvoice extends Component {
     //this.state: {item: {0: "123", 1: "41"}, item2: {}}
   }
   componentDidMount() {
-    this.props.currentList.forEach(row =>
+    this.props.productList.forEach(row =>
       this.setState({ [row.item]: { casePrice: row.cost, oldPrice: row.cost } })
     );
   }
@@ -57,13 +56,13 @@ class InputInvoice extends Component {
     return false;
   }
   render() {
-    const table = this.props.currentList.map((row, i) => (
+    const table = this.props.productList.map((row, i) => (
       <TableRowInvoices
         key={i}
         rowNum={i}
         onChange={this.onInputChange}
         rowData={row}
-        totalRows={Object.keys(this.props.currentList.length)}
+        totalRows={Object.keys(this.props.productList.length)}
       />
     ));
     return (
