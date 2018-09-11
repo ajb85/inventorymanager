@@ -14,7 +14,7 @@ class TableRow extends Component {
     ];
     generatedJSX.push(
       <tr className="alternateHighlight">
-        <td className="borderRight">
+        <td>
           <input
             value={this.props.rowData.item}
             type="text"
@@ -23,7 +23,7 @@ class TableRow extends Component {
             onChange={this.props.onChange.bind(this, row, "item")}
           />
         </td>
-        <td className="borderRight">
+        <td>
           <input
             value={this.props.rowData.measurement}
             type="text"
@@ -32,7 +32,7 @@ class TableRow extends Component {
             onChange={this.props.onChange.bind(this, row, "measurement")}
           />
         </td>
-        <td className="borderRight">
+        <td>
           <input
             value={this.props.rowData.upc}
             type="number"
@@ -41,7 +41,7 @@ class TableRow extends Component {
             onChange={this.props.onChange.bind(this, row, "upc")}
           />
         </td>
-        <td className="borderRight">
+        <td>
           $<input
             value={this.props.rowData.cost}
             type="number"
@@ -50,7 +50,7 @@ class TableRow extends Component {
             onChange={this.props.onChange.bind(this, row, "cost")}
           />
         </td>
-        <td className="borderRight">
+        <td>
           $<input
             value={this.props.rowData.price}
             type="number"
