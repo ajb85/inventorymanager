@@ -7,25 +7,13 @@ renamedObj.cost = rowData[3];
 renamedObj.price = rowData[4];*/
 class TableRowNewInvoices extends Component {
   render() {
-    let row = this.props.rowNum;
     let generatedJSX = [];
-    let borderClassNameFirstCell = ["borderRight", "borderLeft"];
-    let borderClassName = ["borderRight"];
-
-    if (row === this.props.totalRows - 1) {
-      borderClassNameFirstCell.push("underline");
-      borderClassName.push("underline");
-    }
 
     generatedJSX.push(
       <tr className="alternateHighlight">
-        <td className={borderClassNameFirstCell.join(" ")}>
-          {this.props.rowData.item}
-        </td>
-        <td className={borderClassName.join(" ")}>
-          {this.props.rowData.measurement}
-        </td>
-        <td className={borderClassName.join(" ")}>
+        <td className="restrictWidth">{this.props.rowData.item}</td>
+        <td>{this.props.rowData.measurement}</td>
+        <td>
           <input
             type="number"
             onChange={this.props.onChange.bind(
@@ -36,7 +24,7 @@ class TableRowNewInvoices extends Component {
             className="inputListSm"
           />
         </td>
-        <td className={borderClassName.join(" ")}>
+        <td>
           $<input
             type="number"
             tabIndex="-1"
