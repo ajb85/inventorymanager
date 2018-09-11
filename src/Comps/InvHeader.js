@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 import logo from "../imgs/logo.png";
-import ModifyList from "./ModifyList.js";
+import ProductList from "./ProductList.js";
 import NewInventory from "./NewInventory.js";
 import InputInvoice from "./InputInvoice.js";
+import Volume from "./Volume.js";
 //<img src={logo} className="logo" alt="logo" />
+const date = new Date();
+const year = date.getFullYear();
+const month = date.getMonth();
 class InvHeader extends Component {
   render() {
     return (
@@ -22,34 +26,51 @@ class InvHeader extends Component {
             <ul className="dropdown">
               <li
                 className="navList"
-                onClick={this.props.callback.bind(
+                onClick={this.props.loadNewPage.bind(
                   this,
-                  <NewInventory currentList={this.props.currentList} />
+                  <NewInventory
+                    productList={this.props.fetched.productList}
+                    volumes={this.props.fetched.volumes}
+                    inventories={this.props.fetched.inventories}
+                    loadNewPage={this.props.loadNewPage.bind(this)}
+                  />
                 )}
               >
                 New Count
               </li>
-              <li className="navList">Past Counts</li>
               <li
                 className="navList"
-                onClick={this.props.callback.bind(
+                onClick={this.props.loadNewPage.bind(
                   this,
-                  <InputInvoice currentList={this.props.currentList} />
+                  <Volume
+                    startDate={new Date(year, month, 1)}
+                    endDate={new Date(year, month + 1, 0)}
+                    volumes={this.props.fetched.volumes}
+                  />
+                )}
+              >
+                Occupancy
+              </li>
+              <li
+                className="navList"
+                onClick={this.props.loadNewPage.bind(
+                  this,
+                  <InputInvoice productList={this.props.fetched.productList} />
                 )}
               >
                 Input Invoices
               </li>
               <li
                 className="navList"
-                onClick={this.props.callback.bind(
+                onClick={this.props.loadNewPage.bind(
                   this,
-                  <ModifyList
-                    currentList={this.props.currentList}
+                  <ProductList
+                    productList={this.props.fetched.productList}
                     updateList={this.props.updateList}
                   />
                 )}
               >
-                Modify List
+                Product List
               </li>
             </ul>
           </nav>
