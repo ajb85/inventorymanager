@@ -1,0 +1,40 @@
+:root {
+  --primary: #830051;
+  --secondary: #e4e1e0;
+  --tertiary: #ada6a3;
+  --accent: #cf0072;
+}
+.dateNavTable {
+  float: left;
+  margin-top: 10px;
+  margin-left: 5px;
+  text-align: center;
+  border: 1px solid black;
+  border-collapse: collapse;
+  font-size: 18px;
+  background-color: var(--tertiary);
+}
+.dateNavTable thead,
+.dateNavTable thead th {
+  background-color: var(--primary);
+  color: #ffffff;
+  padding: 4px;
+}
+.dateNavTable td {
+  border: 1px black solid;
+  padding: 3px 0 3px 0;
+  cursor: pointer;
+}
+.dateNavTable td:hover {
+  background-color: var(--accent);
+}
+.dateNavTable tr:nth-child(even) {
+  background-color: var(--secondary);
+}
+.mainTable {
+  float: left;
+  margin-top: 10px;
+  margin-left: 5px;
+  border-collapse: collapse;
+  border: 1px solid black;
+}
