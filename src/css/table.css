@@ -76,6 +76,7 @@ td {
 }
 .saveButton {
   position: fixed;
+  width: 185px;
   top: 85px;
   right: 0;
   margin-right: 2px;
@@ -89,8 +90,9 @@ td {
 }
 .volumesCheckBad {
   position: fixed;
-  top: 85px;
-  left: 0;
+  width: 185px;
+  top: 122px;
+  right: 0;
   margin-right: 2px;
   font-family: arial;
   font-size: 15pt;
@@ -102,8 +104,9 @@ td {
 }
 .volumesCheckGood {
   position: fixed;
-  top: 85px;
-  left: 0;
+  width: 185px;
+  top: 122px;
+  right: 0;
   margin-right: 2px;
   font-family: arial;
   font-size: 15pt;
