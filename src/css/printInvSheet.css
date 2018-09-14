@@ -19,7 +19,8 @@
   .currentDate,
   .submitNewInv,
   .saveButton,
-  .submitButton {
+  .submitButton,
+  .volumesCheckBad .volumesCheckGood {
     display: none;
   }
   .tableHeader {
