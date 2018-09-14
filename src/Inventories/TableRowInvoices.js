@@ -8,7 +8,7 @@ renamedObj.price = rowData[4];*/
 class TableRowNewInvoices extends Component {
   render() {
     let generatedJSX = [];
-
+    console.log(this.props.countValue);
     generatedJSX.push(
       <tr className="alternateHighlight">
         <td className="restrictWidth">{this.props.rowData.item}</td>
@@ -16,24 +16,24 @@ class TableRowNewInvoices extends Component {
         <td>
           <input
             type="number"
-            onChange={this.props.onChange.bind(
+            onChange={this.props.onChange.onCountChange.bind(
               this,
-              this.props.rowData.item,
-              "caseCount"
+              this.props.rowData.item
             )}
             className="inputListSm"
+            value={this.props.countValue.item}
           />
         </td>
         <td>
           $<input
             type="number"
             tabIndex="-1"
-            defaultValue={this.props.rowData.cost}
+            value={this.props.rowData.cost}
             className={["inputListSm", "casePrice"].join(" ")}
-            onChange={this.props.onChange.bind(
+            onChange={this.props.onChange.onPriceChange.bind(
               this,
-              this.props.rowData.item,
-              "casePrice"
+              this.props.rowIndex,
+              "cost"
             )}
           />
         </td>

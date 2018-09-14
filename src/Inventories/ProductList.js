@@ -69,7 +69,7 @@ class ProductList extends Component {
       rows: [
         ...this.state.rows.slice(0, rowIndex),
         updatedRow,
-        ...this.state.rows.slice(rowIndex + 1, this.state.rows.length)
+        ...this.state.rows.slice(rowIndex + 1)
       ]
     });
   }

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import TableRowNewInv from "./TableRowNewInv.js";
-import "../css/printInvSheet.css";
+import ".../css/printInvSheet.css";
 import VolumePopUp from "./VolumePopUp.js";
 import AppIndex from "./AppIndex.js";
 
@@ -10,6 +10,7 @@ class NewInventory extends Component {
     this.onInvChange = this.onInvChange.bind(this);
     this.onVolumeChange = this.onVolumeChange.bind(this);
     this.toggleVolumesTable = this.toggleVolumesTable.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
     this.state = {
       date: getTodaysDate(),
       volumesComplete: false,
@@ -81,7 +82,8 @@ class NewInventory extends Component {
   onSubmit(event) {
     event.preventDefault();
     const time = new Date().getTime();
-    let inventoryData = { [time]: this.state.newCount };
+    const inventoryData = { [time]: this.state.newCount };
+    const volumesData = this.state.calendar.volumes;
     //POST fetch to update server file under username with name+link
     const saveFileURL = "./saveInvData.php";
     var allFetchData = [
@@ -92,7 +94,7 @@ class NewInventory extends Component {
       },
       {
         method: "POST",
-        body: JSON.stringify([this.state.newVolumes, "volumes"]),
+        body: JSON.stringify([volumesData, "volumes"]),
         cache: "no-cache"
       }
     ];

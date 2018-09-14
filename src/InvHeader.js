@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import logo from "../imgs/logo.png";
-import ProductList from "./ProductList.js";
-import NewInventory from "./NewInventory.js";
-import InputInvoice from "./InputInvoice.js";
-import Volume from "./Volume.js";
+//import logo from "./imgs/logo.png";
+import ProductList from "./Inventories/ProductList.js";
+import NewInventory from "./Inventories/NewInventory.js";
+import InputInvoice from "./Inventories/InputInvoice.js";
+import Volume from "./Inventories/Volume.js";
+import Usage from "./Reports/Usage.js";
 //<img src={logo} className="logo" alt="logo" />
 const date = new Date();
 const year = date.getFullYear();
@@ -16,7 +17,20 @@ class InvHeader extends Component {
           <nav className="title">
             Reports
             <ul className="dropdown">
-              <li className="navList">Usage</li>
+              <li
+                className="navList"
+                onClick={this.props.loadNewPage.bind(
+                  this,
+                  <Usage
+                    productList={this.props.fetched.productList}
+                    volumes={this.props.fetched.volumes}
+                    inventories={this.props.fetched.inventories}
+                    invoices={this.props.fetched.invoices}
+                  />
+                )}
+              >
+                Usage
+              </li>
               <li className="navList">Waste</li>
               <li className="navList">Projection</li>
             </ul>
@@ -55,7 +69,10 @@ class InvHeader extends Component {
                 className="navList"
                 onClick={this.props.loadNewPage.bind(
                   this,
-                  <InputInvoice productList={this.props.fetched.productList} />
+                  <InputInvoice
+                    productList={this.props.fetched.productList}
+                    functions={this.props.functions}
+                  />
                 )}
               >
                 Input Invoices
