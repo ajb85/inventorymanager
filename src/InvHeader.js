@@ -5,6 +5,7 @@ import NewInventory from "./Inventories/NewInventory.js";
 import InputInvoice from "./Inventories/InputInvoice.js";
 import Volume from "./Inventories/Volume.js";
 import Usage from "./Reports/Usage.js";
+import ViewCounts from "./Inventories/ViewCounts.js";
 //<img src={logo} className="logo" alt="logo" />
 const date = new Date();
 const year = date.getFullYear();
@@ -51,6 +52,15 @@ class InvHeader extends Component {
                 )}
               >
                 New Count
+              </li>
+              <li
+                className="navList"
+                onClick={this.props.loadNewPage.bind(
+                  this,
+                  <ViewCounts inventories={this.props.fetched.inventories} />
+                )}
+              >
+                View Counts
               </li>
               <li
                 className="navList"

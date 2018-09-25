@@ -29,7 +29,7 @@ class TableRowNewInvoices extends Component {
             type="number"
             tabIndex="-1"
             value={this.props.rowData.cost}
-            className={["inputListSm", "casePrice"].join(" ")}
+            className={["inputListSm", "clickToEdit"].join(" ")}
             onChange={this.props.onChange.onPriceChange.bind(
               this,
               this.props.rowIndex,

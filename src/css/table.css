@@ -23,11 +23,11 @@ td {
   width: 50px;
   text-align: center;
 }
-.casePrice {
+.clickToEdit {
   border: transparent;
   background: transparent;
 }
-.casePrice:focus {
+.clickToEdit:focus {
   border: 1px solid black;
   background: white;
 }

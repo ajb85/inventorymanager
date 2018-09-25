@@ -14,7 +14,6 @@
   font-size: 18px;
   background-color: var(--tertiary);
 }
-.dateNavTable thead,
 .dateNavTable thead th {
   background-color: var(--primary);
   color: #ffffff;
@@ -34,7 +33,20 @@
 .mainTable {
   float: left;
   margin-top: 10px;
-  margin-left: 5px;
+  margin-left: 15px;
   border-collapse: collapse;
+  border: 1px solid black;
+}
+.mainTable th {
+  padding: 5px 7px 5px 7px;
+  max-width: 100px;
+  background-color: var(--primary);
+  color: #ffffff;
+}
+.mainTable tr:nth-child(even) {
+  background-color: var(--secondary);
+}
+.mainTable td {
+  text-align: center;
   border: 1px solid black;
 }

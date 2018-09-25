@@ -27,7 +27,7 @@ class App extends Component {
   }
   fetchUserData() {
     let callback = this.updateStateCallback;
-
+    /*
     //Local testing code
     callback("productList", localList);
     callback("volumes", localVolume);
@@ -36,7 +36,7 @@ class App extends Component {
     /*/
     //Live server code
     const saveFileURL = "./loadInvData.php";
-    const filesToFetch = ["productList", "volumes", "inventories", invoices];
+    const filesToFetch = ["productList", "volumes", "inventories", "invoices"];
     filesToFetch.forEach(function(file) {
       const fetchData = {
         method: "POST",
@@ -77,7 +77,7 @@ class App extends Component {
 }
 
 export default App;
-
+///*
 //Local test Data
 const localInventory = {
   "1537156800000": {

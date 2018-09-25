@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 
 class UsageSmTable extends Component {
-  constructor(props) {
-    super(props);
-  }
-
+  //Requires onClick prop to determine which date to load.
+  //Plus a date prop to populate the cell
   render() {
     return (
       <tr>
-        <td>{dateFormat(this.props.date)}</td>
+        <td onClick={this.props.onClick.bind(this, Number(this.props.date))}>
+          {dateFormat(this.props.date)}
+        </td>
       </tr>
     );
   }
@@ -21,7 +21,7 @@ function dateFormat(dateEpoch) {
   let mm = date.getMonth();
   const yyyy = date.getFullYear();
   let dd = date.getDate();
-  mm = mm - 1;
+  mm++;
 
   if (dd < 10) {
     dd = "0" + dd;
