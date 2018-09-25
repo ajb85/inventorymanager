@@ -42,7 +42,7 @@ class ViewCounts extends Component {
   }
   onSubmit(event) {
     event.preventDefault();
-    let inventoryData = this.props.inventories;
+    let inventoryData = Object.assign({}, this.props.inventories);
     inventoryData[this.state.date] = invArrToObj(this.state.count);
     //POST fetch to update server file under username with name+link
     const saveFileURL = "./saveInvData.php";
@@ -129,7 +129,7 @@ function invArrToObj(inv) {
   let obj = {};
   inv.forEach(function(item) {
     const key = Object.keys(item)[0];
-    obj[item] = item[key];
+    obj[key] = item[key];
   });
   return obj;
 }
